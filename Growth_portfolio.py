@@ -2,7 +2,6 @@ from yahoo_fin.stock_info import get_live_price
 
 def portfolio_mkt_value(stocks, shares, target):
     # d_stock_shares = dict(zip(stocks, shares))
-    
     mkt_value = 0
     stock_value = []
     for i in range(len(stocks)):
@@ -20,7 +19,8 @@ def portfolio_mkt_value(stocks, shares, target):
     a = round(mkt_value, 3)
     b = allocation
     c = target
-    return "\n" + f"Market value: ${a}" + "\n" + f"stock allocation(%): {b}" + "\n" + f"          target(%): {c}"
+    return "\n" + f"Market value: ${a}" + "\n" + f"stock allocation(%): {b}" + "\n" + f"target(%): {c}"
+
 
 def price(stocks, shares):
     price = []
@@ -29,13 +29,13 @@ def price(stocks, shares):
         price.append(l)
     stock_price = dict(zip(stocks, price))
     stock_shares = dict(zip(stocks, shares))
-    return f"              price: {stock_price}" + "\n" + f"             shares: {stock_shares}"
+    return f"price: {stock_price}" + "\n" + f"shares: {stock_shares}"
 
 
 def main():
-    stocks = ["SGOL", "VBR", "VGLT", "VGSH", "VOO"]
-    shares = [40.000, 7.153, 7.155, 16.228, 4.018]
-    target = [13.740, 0.000, 13.450, 10.000, 62.810]
+    stocks = ["SGOL", "VGLT", "VGSH", "VOO"]
+    shares = [40.000, 7.165, 16.237, 4.018]
+    target = [13.740, 13.450, 10.000, 62.810]
     print(portfolio_mkt_value(stocks, shares, target))
     print(price(stocks, shares))
 
