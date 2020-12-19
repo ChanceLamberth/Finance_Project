@@ -1,8 +1,8 @@
 from yahoo_fin.stock_info import get_live_price
 
-def portfolio_mkt_value(stocks, shares, target):
+def portfolio_mkt_value(stocks, shares, target, cash):
     # d_stock_shares = dict(zip(stocks, shares))
-    mkt_value = 0
+    mkt_value = 0 + cash
     stock_value = []
     for i in range(len(stocks)):
         l = get_live_price(stocks[i])
@@ -36,7 +36,8 @@ def main():
     stocks = ["SGOL", "VGLT", "VGSH", "VOO"]
     shares = [40.000, 7.165, 16.237, 4.018]
     target = [13.740, 13.450, 10.000, 62.810]
-    print(portfolio_mkt_value(stocks, shares, target))
+    cash = 1797.42
+    print(portfolio_mkt_value(stocks, shares, target, cash))
     print(price(stocks, shares))
 
 
