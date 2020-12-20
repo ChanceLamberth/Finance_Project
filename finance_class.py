@@ -1,4 +1,6 @@
 from yahoo_fin.stock_info import get_live_price
+"""refer to Class_practice.py for more details on how to mainputlate class and use test.py to work on 
+   smaller aspects of the project."""
 
 class Stocks:
     def __init__(self, symbol, qty = 0, cost = 0, price = 0, worth = 0):
