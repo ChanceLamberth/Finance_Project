@@ -24,22 +24,30 @@ class Stocks:
                 "\n'ESC' is to exit")
             x = input()
             if x == "Qty":
-                # 1. Find out which stock's share qty I want to change
-                # 2. Create a dictionary and edit the key's value.
-                # 3. add another layer to make sure this is correct? I don't want to make a mistake.
-                q = float(input("what is the new quanty: "))
-                # need to set up the same thing as I can doing for the change in cost.
-                self.qty = q
+                print("\n0 : SGOL", "1 : VGLT", "2 : VGSH", "3 : VOO")
+                q = int(input("which stock would you like to change: "))
+                if q == 0:
+                    self.qty.pop(0)
+                    new = float(input("new qty: "))
+                    self.qty.insert(0, new)
+                if q == 1:
+                    pass
+                if q == 2:
+                    pass
+                if q == 3:
+                    pass
             if x == "C":
-                c = float(input("What is the new cost: "))
                 print("0 : SGOL", "1 : VGLT", "2 : VGSH", "3 : VOO")
+                c = float(input("Which stock? "))
                 c = int(input("enter the number to update the stock's cost: "))
                 if c == 0:
                     pass
-                    # need to create a dictionary so i can choose a key and edit its value.
-                    # Working on this part now. 
-                    # add in a confirmation?
-                    # self.cost = c
+                if c == 1:
+                    pass
+                if c == 2:
+                    pass
+                if c == 3:
+                    pass
             if x == "ESC":
                 break
         return "update completed\n"
@@ -56,35 +64,39 @@ class Stocks:
 
     # this is to find market value
     def find_worth(self):
+        sol = 0 + 1797.42
         worth = []
         self.worth = worth
-        # sol = 0 + 1797.42
         for i in range(len(self.price)):
             s = round(self.price[i] * self.qty[i], 2)
             worth.append(s)
-            # sol += s
-        return worth, # sol
+            sol += s
+        return f"\nPortfolio value: {sol}"
 
 
     def final_output(self):
-        return f"price: {self.price}, market value: {self.worth}, cost: {self.cost}"
+        return f"price: {self.price} \nmarket value: {self.worth} \ncost: {self.cost}\n"
 
 
 def main():
     symbol = ["SGOL", "VGLT", "VGSH", "VOO"]
     qty = [40.000, 7.165, 16.237, 4.018]
     cost = [600, 600, 1005, 1100]
-    # cost = []
     S = Stocks(symbol, qty, cost)
     while True:
         x = input("UPDATES -- Y or N\n")
         if x == "Y":
-            (S.update())
+            S.update()
         else:
+            (S.find_price(symbol))
+            print(S.find_worth())
+            print(S.final_output())
+            # print("leaving program....\n")
             break
-    (S.find_price(symbol))
-    (S.find_worth())
-    print(S.final_output())
+    
+    
+    
+    
     
 
 main()
